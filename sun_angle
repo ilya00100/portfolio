@@ -1,0 +1,11 @@
+from typing import Union
+
+def sun_angle(time: str) -> Union[int, str]:
+    time = time.split(':')
+    h = int(time[0])
+    m = int(time[1])
+    if (6 <= h < 18 or (h == 18 and m == 0)):
+        degree = m*0.25 + (h - 6)*15
+    else:
+        return "I don't see the sun!"    
+    return degree
