@@ -1,0 +1,23 @@
+KEY = {
+    "{": "}",
+    "(": ")",
+    "[": "]"
+}
+
+def checkio(expression):
+    parentheses = ''
+    indicator = 1
+    for i in list(expression):
+        if i in ('(',')','{','}','[',']'):
+            parentheses = parentheses + i
+    if len(parentheses)%2 != 0:
+        return False
+    else:
+        while len(parentheses) > 0 and indicator == 1:
+            for i in range(int(len(parentheses)-1)):
+                indicator = 0
+                if KEY.get(parentheses[i]) == parentheses[i+1]:
+                    parentheses = parentheses[:i] + parentheses[i+2:]
+                    indicator = 1
+                    break    
+    return True if len(parentheses) == 0 else False
