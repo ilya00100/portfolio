@@ -1,0 +1,11 @@
+import datetime
+
+def date_time(time: str) -> str:
+    date_obj = datetime.datetime.strptime(time, '%d.%m.%Y %H:%M')
+    if date_obj.strftime('%H%M') == '0101':
+        return date_obj.strftime('%-d %B %Y year %-H hour %-M minute')
+    if date_obj.strftime('%H') == '01':
+        return date_obj.strftime('%-d %B %Y year %-H hour %-M minutes')
+    if date_obj.strftime('%M') == '01':
+        return date_obj.strftime('%-d %B %Y year %-H hours %-M minute')
+    return date_obj.strftime('%-d %B %Y year %-H hours %-M minutes')
